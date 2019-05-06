@@ -1,0 +1,79 @@
+// File: testFile2.txt 
+// Data file for SeaPort projects 
+// Date: Sat Jul 09 22:51:16 EDT 2016 
+// parameters: 1 1 5 5 1 5 
+// ports, docks, pships, cships, jobs, persons 
+
+// port name index parent(null) 
+// port <string> <int> <int> 
+port Lanshan 10002 0 
+
+// dock name index parent(port) 
+// dock <string> <int> <int> 
+dock Pier_0 20000 10002 30000 
+dock Pier_1 20001 10002 30001 
+
+// pship name index parent(dock/port) weight length width draft numPassengers numRooms numOccupied 
+// pship <string> <int> <int> <double> <double> <double> <double> <int> <int> <int> 
+pship Remora 30001 20001 126.38 358.27 74.12 31.54 3768 979 979 
+pship Preanesthetic 30003 10002 149.85 483.92 125.71 31.21 166 409 83 
+
+
+// cship name index parent(dock/port) weight length width draft cargoWeight cargoVolume cargoValue 
+// cship <string> <int> <int> <double> <double> <double> <double> <double> <double> <double> 
+cship Barcelona 40003 10002 219.92 443.54 104.44 34.16 86.69 139.89 813.72 
+cship Toluene 40004 10002 189.12 448.99 73.97 37.67 88.90 175.03 1002.63 
+
+// person name index parent skill 
+// person <string> <int> <int> <string> 
+person Sara 50000 10002 electrician 
+person Duane 50002 10002 inspector 
+person Betsy 50004 10002 cleaner 
+person Archie 50003 10002 captain 
+person Thomas 50001 10002 clerk
+
+// port name index parent(null) 
+// port <string> <int> <int> 
+port Macau 10001 0 
+
+// dock name index parent(port) 
+// dock <string> <int> <int> 
+dock Pier_5 20006 10001 30006 
+dock Pier_6 20008 10001 30008 
+
+
+// pship name index parent(dock/port) weight length width draft numPassengers numRooms numOccupied 
+// pship <string> <int> <int> <double> <double> <double> <double> <int> <int> <int> 
+pship Dallinules 30005 10002 125.99 234.70 60.67 37.14 746 246 246 
+pship Gemora 30006 20006 126.38 358.27 74.12 31.54 3768 979 979 
+pship Treanesthetic 30008 20008 149.85 483.92 125.71 31.21 166 409 83 
+pship Obsentmindedness 30009 10001 86.74 450.43 33.13 41.67 2143 920 920 
+
+pship Choetrees 30007 20007 134.41 156.96 120.31 35.20 1673 633 633 
+
+// cship name index parent(dock/port) weight length width draft cargoWeight cargoVolume cargoValue 
+// cship <string> <int> <int> <double> <double> <double> <double> <double> <double> <double> 
+cship Irosional 40006 10001 200.80 242.33 38.31 23.49 172.73 188.54 235.57 
+cship Cielbasas 40005 10001 120.85 362.55 96.82 19.09 33.08 188.31 261.57 
+cship Henerics 40007 10001 79.90 234.26 73.18 15.71 125.27 179.00 729.95 
+ship Warcelona 40008 10001 219.92 443.54 104.44 34.16 86.69 
+cship Boluene 40009 20009 189.12 448.99 73.97 37.67 88.90 175.03 1002.63 
+
+// person name index parent skill 
+// person <string> <int> <int> <string> 
+person Tommy 50005 10001 manager 
+person Duane 50007 10001 foreman 
+person Donnie 50009 10001 cleaner 
+person Archie 50008 10001 captain 
+person Thomas 50006 10001 clerk
+
+// job <name (String)> <index (int)> <parent ship index (int)> <duration (double)> [<skill required (String)>]+
+job Job1 60001 30006 5.0 captain clerk
+job Job2 60002 30008 7.0 cleaner foreman manager
+// job Job9 60009 30008 5.0 captain
+job Job3 60003 30008 11.0 manager
+job Job4 60004 30009 15.0 cleaner
+job Job8 60008 30009 17.0 clerk
+job Job5 60005 40004 13.0 clerk
+job Job6 60006 40008 12.0 manager
+job Job7 60007 30003 14.0 manager
