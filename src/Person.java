@@ -60,7 +60,7 @@ class Person extends Thing {
   public synchronized void outerLock() {
     Thread callingThread = Thread.currentThread();
 
-    while (outerLocked && outerLockedBy != callingThread) {
+    while ((outerLocked && !outerLockedBy.equals(callingThread)) || innerLocked) {
       try {
         Thread.sleep(1000);
       } catch (InterruptedException ex) {
@@ -73,7 +73,7 @@ class Person extends Thing {
   }
 
   public synchronized void outerUnlock() {
-    if (Thread.currentThread() == outerLockedBy) {
+    if (Thread.currentThread().equals(outerLockedBy)) {
       innerLocked = false;
       outerLocked = false;
       notify();
@@ -85,7 +85,7 @@ class Person extends Thing {
   public synchronized void innerLock(Thread t) {
     Thread callingThread = Thread.currentThread();
 
-    while ((innerLocked && innerLockedBy != callingThread) || outerLockedBy != t || !outerLocked) {
+    while ((innerLocked && !innerLockedBy.equals(callingThread)) || outerLockedBy != t || !outerLocked) {
       try {
        System.out.println(callingThread.getName() + " " + Boolean.toString(innerLocked) + " "+ outerLockedBy.getName() + " " + t.getName() + " " +Boolean.toString(outerLocked));
         wait();
@@ -98,7 +98,7 @@ class Person extends Thing {
   }
 
   public synchronized void innerUnlock() {
-    if (Thread.currentThread() == this.innerLockedBy) {
+    if (Thread.currentThread().equals(this.innerLockedBy)) {
 
       innerLocked = false;
       notify();
